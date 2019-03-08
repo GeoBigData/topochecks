@@ -15,16 +15,21 @@ class CRSError(Exception):
 @click.argument('out_shp')
 @click.option('--overwrite', '-O', type=bool, default=False, is_flag=True,
               help="Overwrite the output shapefile if it already exists")
-def main(in_shp, out_shp, overwrite):
+def main(in_shp, out_shp, overwrite=False):
 
     # check that the input shapefile exists
     if os.path.exists(in_shp) is False:
         raise FileExistsError("Input {} could not be found.".format(in_shp))
     # check if the output shapefile exists
+    if overwrite is None:
+        overwrite = False
     if os.path.exists(out_shp) is True:
         if overwrite is False:
             err = "Output {} already exists. Use the overwrite flag or specify a different output.".format(out_shp)
             raise FileExistsError(err)
+        if overwrite is True:
+            print("Output {} already exists and will be overwritten.")
+            click.confirm("Do you want to continue?", abort=True)
 
     # read geometries from the input file
     print("Reading input shapefile.")
