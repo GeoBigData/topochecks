@@ -1,0 +1,18 @@
+# environment.yml
+name: topochecks
+channels: !!python/tuple
+- !!python/unicode
+  'conda-forge'
+- !!python/unicode
+  'digitalglobe'
+- !!python/unicode
+  'defaults'
+dependencies:
+- conda-forge::python=3.6.6
+- conda-forge::shapely
+- conda-forge::fiona
+- conda-forge::rtree
+- conda-forge::click
+- conda-forge::tqdm
+- conda-forge::pyinstaller
+- pip:
