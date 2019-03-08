@@ -1,4 +1,5 @@
 # -*- mode: python -*-
+# TO RUN PYINSTALLER: pyinstaller find_duplicate_polygons.spec --runtime-hook runtime_hooks.py
 import sys
 
 block_cipher = None
